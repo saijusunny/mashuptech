@@ -32,9 +32,9 @@
                
                 
                 <td>
-                    <input type="hidden" id="ids2"  >
+                    
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#up{{task.id}}" >Edit</a>
-                    <button class=" btn btn-danger ml-1" id='del{{forloop.counter}}'  value="{{task.id}}" onclick=get_ids(`{{task.id}}`)>delete</button></td>
+                    <button class=" btn btn-danger ml-1" id='del{{forloop.counter}}'  value="{{task.id}}" >delete</button></td>
               </tr>
               {%endfor%}
               
@@ -68,7 +68,7 @@
                     {%else%}
                     <input type="checkbox" name="status" id="ed_status{{task.id}}"  checked>&nbspComplete
                     {%endif%}
-                    <input type="hidden" id="ids" value={{task.id}} >
+                    
                 </form>
             </div>
             <div class="modal-footer">
@@ -114,14 +114,11 @@
 </div>
 
   <script>
-  function get_ids(idss){
-    document.getElementById('ids2').value=idss
-  }
+  
    
  $(document).ready(function() {
     // Add Function
-    var id_no=$("#ids").val();
-    var id_no2=$("#ids2").val();
+    
     for (var i = 0; i < `{{tots}}`; i++) {
         j=i+1
         console.log(j)
