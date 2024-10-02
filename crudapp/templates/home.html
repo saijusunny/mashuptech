@@ -32,9 +32,9 @@
                
                 
                 <td>
-                    <input type="text" id="ids2"  >
+                    <input type="hidden" id="ids2"  >
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#up{{task.id}}" >Edit</a>
-                    <button class=" btn btn-danger ml-1" id='del{{task.id}}'  value="{{task.id}}" onclick=get_ids(`{{task.id}}`)>delete</button></td>
+                    <button class=" btn btn-danger ml-1" id='del{{forloop.counter}}'  value="{{task.id}}" onclick=get_ids(`{{task.id}}`)>delete</button></td>
               </tr>
               {%endfor%}
               
@@ -68,12 +68,12 @@
                     {%else%}
                     <input type="checkbox" name="status" id="ed_status{{task.id}}"  checked>&nbspComplete
                     {%endif%}
-                    <input type="text" id="ids" value={{task.id}} >
+                    <input type="hidden" id="ids" value={{task.id}} >
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="edit-button{{task.id}}" value={{task.id}}>Save changes</button>
+                <button type="button" class="btn btn-primary" id="edit-button{{forloop.counter}}" value={{task.id}}>Save changes</button>
             </div>
         </div>
     </div>
@@ -122,10 +122,14 @@
     // Add Function
     var id_no=$("#ids").val();
     var id_no2=$("#ids2").val();
+    for (var i = 0; i < `{{tots}}`; i++) {
+        j=i+1
+        console.log(j)
+    
     
     $('#add-button').click(function() {
           
-          
+            
             var add_name = $("#add_name").val();
             var add_task = $('#add_task').val();
             var add_status = $('#add_status').is(':checked') ? 1 : 0;
@@ -150,7 +154,7 @@
             });
         });
     // Edit Function
-        $(`#edit-button${id_no}`).click(function() {
+        $(`#edit-button${j}`).click(function() {
             var key = $(this).val(); 
           
             var ed_name = $("#ed_name"+key).val();
@@ -178,7 +182,7 @@
         });
 
         // delete function
-        $(`#del${id_no}`).click(function() {
+        $(`#del${j}`).click(function() {
             var key = $(this).val(); 
           
             
@@ -197,6 +201,7 @@
                 }
             });
         });
+    }
     });
 </script>
 

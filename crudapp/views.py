@@ -77,7 +77,7 @@ def adminlogin(request):
         return redirect('login')
 
 def logout_view(request):
-    logout(request)  # This logs out the user
+    logout(request)
     return redirect('login') 
 
 @login_required
