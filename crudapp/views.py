@@ -89,7 +89,7 @@ def home(request):
     
 def edit_func(request):
     if request.method == 'POST':
-        # Perform your logic here (e.g., saving data)
+        
         ed_name= request.POST.get('ed_name')
         ed_task=request.POST.get('ed_task')
         ed_status=request.POST.get('ed_status')
