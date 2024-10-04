@@ -84,7 +84,7 @@ def logout_view(request):
 def home(request):
     tasks=task.objects.filter(user=request.user)
     tots=task.objects.filter(user=request.user).count()
-  
+   
     return render(request, "home.html",{'tasks':tasks,'tots':tots})
     
 def edit_func(request):
@@ -110,6 +110,7 @@ def edit_func(request):
     return redirect('home')
 
 def add_func(request):
+    print("haaii")
     if request.method == 'POST':
         
         addtask=task()
